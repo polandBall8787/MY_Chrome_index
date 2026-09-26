@@ -20,6 +20,7 @@ body {
 body {
   background-image: url("photo/backImage.jpg");
   background-size: cover;
+  background-position: right; /* 關鍵：強制圖片以右側為基準對齊 */
   transition: all 0.2s ease-in-out;
   overflow: hidden;
 
@@ -27,6 +28,7 @@ body {
     backdrop-filter: blur(10px);
   }
 }
+
 
 header {
   height: 60px;
