@@ -18,7 +18,7 @@ body {
 }
 
 body {
-  background-image: url("https://i.pinimg.com/originals/fa/29/db/fa29dbfa6794e04d93c534e9b27b0f34.jpg");
+  background-image: url("photo/backImage.jpg");
   background-size: cover;
   transition: all 0.2s ease-in-out;
   overflow: hidden;
