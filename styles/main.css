@@ -103,8 +103,8 @@ select,
 
   /* 必須明確針對 display 與 overlay 設定 allow-discrete */
   transition: all 0.2s ease-in-out,
-              display 0.2s allow-discrete,
-              overlay 0.2s allow-discrete;
+    display 0.2s allow-discrete,
+    overlay 0.2s allow-discrete;
 }
 
 /* 開啟時的狀態（進場終點） */
@@ -211,9 +211,8 @@ select:active {
   order: 0;
   background-color: rgba(0, 0, 0, 0.186);
   backdrop-filter: blur(10px);
-
-  border: 2px solid #ffa95d;
-
+  position: relative;
+  border: 0px solid #ffa95d;
   transition: all 0.2s ease-in-out;
 }
 

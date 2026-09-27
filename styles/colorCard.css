@@ -1,0 +1,31 @@
+.brown-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-width: 3px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 15px;
+  /* 這裡改為 to bottom right */
+  background-image: linear-gradient(to bottom right, #ffa95d, rgb(122, 77, 42));
+  background-origin: border-box;
+  mask-image: linear-gradient(white, white), linear-gradient(white, white);
+  mask-composite: exclude, add;
+  mask-clip: padding-box, border-box;
+}
+
+.colorful-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-width: 3px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 15px;
+  /* 這裡改為 to bottom right */
+  background-image: linear-gradient(135deg, #bf616a 25%, #ebcb8b 25% 50%, #a3be8c 25% 75%, #81a1c1 25% 100%);
+  background-origin: border-box;
+  mask-image: linear-gradient(white, white), linear-gradient(white, white);
+  mask-composite: exclude, add;
+  mask-clip: padding-box, border-box;
+}
