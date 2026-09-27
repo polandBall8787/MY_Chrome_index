@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'MantouSans';
+  /* 自訂你的字體名稱 */
+  src: url('fonts/MantouSans.woff2') format('woff2'),
+    /* 優先使用高效能的 woff2 格式 */
+    url('fonts/MantouSans-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   color: aliceblue;
   -webkit-user-select: none;
@@ -20,7 +30,8 @@ body {
 body {
   background-image: url("photo/backImage.jpg");
   background-size: cover;
-  background-position: right; /* 關鍵：強制圖片以右側為基準對齊 */
+  background-position: right;
+  /* 關鍵：強制圖片以右側為基準對齊 */
   transition: all 0.2s ease-in-out;
   overflow: hidden;
 
@@ -52,7 +63,17 @@ li {
   margin: 10px;
 }
 
+input:focus {
+  outline: none;
+}
+
 select {
+  appearance: base-select;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   border: 0px;
   width: 100px;
   height: 42px;
@@ -61,17 +82,71 @@ select {
 
   transition: all 0.2s ease-in-out;
   background-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+::picker(select) {
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(10px);
+  border: 2px solid #ffa95d;
+  margin: 10px 0px;
+
+  /* 關閉時的狀態（退場終點） */
+  opacity: 0;
+  transform: translateY(-8px);
+
+  /* 必須明確針對 display 與 overlay 設定 allow-discrete */
+  transition: all 0.2s ease-in-out,
+              display 0.2s allow-discrete,
+              overlay 0.2s allow-discrete;
+}
+
+/* 開啟時的狀態（進場終點） */
+::picker(select):popover-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 定義由無到有展開瞬間的「起點狀態」 */
+@starting-style {
+  ::picker(select):popover-open {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+::checkmark {
+  display: none;
+}
+
+option {
+  color: white;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  transition: all 0.2s ease-in-out;
+}
+
+option:hover {
+  background-color: rgba(0, 0, 0, 0.186);
 }
 
 select:hover {
   background-color: rgba(0, 0, 0, 0.186);
+  outline: none;
 }
 
 select:active {
   background-color: rgba(255, 255, 255, 0.186);
-}
-
-input:focus {
   outline: none;
 }
 
@@ -89,7 +164,6 @@ input:focus {
   display: grid;
   justify-content: center;
   align-items: center;
-
 }
 
 .search-bar {
@@ -98,7 +172,7 @@ input:focus {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.186);
   backdrop-filter: blur(10px);
-  border: 0px;
+  border: 0px solid #ffa95d;
 
   transform: scale(1.2) translateY(-100px);
   transition: all 0.3s ease;
@@ -107,6 +181,7 @@ input:focus {
     transform: scale(1.75) translateY(-100px);
     background-color: rgba(0, 0, 0, 0.523);
     box-shadow: 10px 10px 100px 1000px rgba(0, 0, 0, 0.454);
+    border: 2px solid #ffa95d;
   }
 }
 
@@ -136,10 +211,10 @@ input:focus {
   order: 0;
   background-color: rgba(0, 0, 0, 0.186);
   backdrop-filter: blur(10px);
-  border: 0px;
+
+  border: 2px solid #ffa95d;
 
   transition: all 0.2s ease-in-out;
-
 }
 
 body:has(.search-input:focus) #links {
